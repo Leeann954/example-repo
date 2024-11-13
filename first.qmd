@@ -1,0 +1,34 @@
+---
+title: "My first slides"
+subtitle: "Dataviz of gapminder"
+author: "Linghan Zheng"
+format: revealjs
+editor: visual
+execute: 
+  echo: true
+---
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+library(gapminder)
+gapminder
+```
+## code 1
+```{r}
+library(dplyr)
+gapminder_2007<-
+  gapminder |> 
+  filter(year==2007)
+```
+## process data
+```{r}
+library(ggplot2)
+ggplot(gapminder_2007) +
+  geom_point(aes(x = lifeExp, y = gdpPercap,
+                 color = continent)) +
+  ggthemes::scale_color_colorblind() +
+  theme_minimal()
+```
