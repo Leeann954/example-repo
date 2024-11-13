@@ -1,0 +1,66 @@
+---
+title: "STARWARS EXERCISE"
+format: html
+editor: visual
+---
+
+-   ***#1.access the names of starwars***
+
+```{r}
+library(dplyr)
+starwars<-dplyr::starwars
+names(starwars)
+
+
+
+
+```
+
+## 
+
+-   ***#2.replace the heights (cm) by in meters***
+
+```{r}
+starwars$height<-starwars$height/100
+starwars$height
+
+```
+
+-   ***#3.filter just human characters***
+
+```{r}
+starwars_filter<-starwars[starwars$species=="Human"& !is.na(starwars$species),]
+starwars_filter
+```
+
+-   ***#4.include a new BMI(IMC) variable for those humans***
+
+```{r}
+starwars$BMI<-starwars$mass/(starwars$height)^2
+starwars$BMI
+```
+
+-   ***#5.which sex is tallest:male of female?***
+
+```{r}
+mean(starwars_filter$height[starwars_filter$sex=="male"],na.rm = TRUE)
+mean(starwars_filter$height[starwars_filter$sex=="female"],na.rm = TRUE)
+```
+
+#6.
+
+```{r}
+starwars<-dplyr::starwars
+
+#we want create a new variable under_18
+#TRUE if birth_year<18
+#FALSE if not
+
+starwars$under_18<-starwars$birth_year<18
+  starwars[starwars$under_18,]
+  
+  # we want to create a new variable age
+  #"under_18" if birth_year<18
+  #"over_18" if not
+  
+```
